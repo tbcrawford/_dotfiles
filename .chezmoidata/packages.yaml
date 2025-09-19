@@ -1,0 +1,6 @@
+packages:
+  darwin:
+    brews:
+    - 'ripgrep'
+    casks:
+    - 'firefox'
