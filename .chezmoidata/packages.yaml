@@ -1,6 +1,7 @@
 packages:
   darwin:
     brews:
+    - 'chezmoi'
     - 'ripgrep'
     casks:
     - 'firefox'
