@@ -41,14 +41,6 @@ error_symbol = "[❯](bold red)"
 [package]
 disabled = true
 
-# [custom.latest-release]
-# description = "Show latest git tag"
-# command = """git tag -l --sort=-v:refname | rg "^v\\d+\\.\\d+\\.\\d+$" | head -1"""
-# style = "bold blue"
-# symbol = "\uf02c"
-# require_repo = true
-# format = "at [$symbol ($output)]($style) "
-
 [custom.latest-release]
 description = "Show latest git tag"
 command = 'git tag -l --sort=-v:refname | rg "^v\d+\.\d+\.\d+\$" | head -1'
