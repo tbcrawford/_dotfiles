@@ -1,0 +1,5 @@
+.config/fish/.fisher/
+.config/fish/.spec-workflow/
+.config/fish/completions/
+.config/fish/fish_variables
+.config/fish/opencode.json

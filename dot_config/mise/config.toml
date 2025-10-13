@@ -1,0 +1,10 @@
+[tools]
+java = "zulu-21"
+node = "22"
+watchexec = "latest"
+terraform = "latest"
+
+[settings]
+experimental = true
+idiomatic_version_file_enable_tools = ["java", "terraform"]
+

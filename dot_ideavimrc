@@ -1,0 +1,149 @@
+let mapleader=" "
+
+""" ---------------------------------------------------------------------------
+""" General -------------------------------------------------------------------
+""" ---------------------------------------------------------------------------
+
+set clipboard=unnamedplus                 " integrate with system clipboard
+set gdefault                              " substitute all occurrences in line per default
+set history=10000                         " keep x lines of command line history
+set hlsearch                              " highlight search occurrences
+set ignorecase                            " ignore case in search patterns
+set incsearch                             " show search results while typing
+set relativenumber                        " relative line numbers
+set scrolloff=5 sidescrolloff=10          " keep some lines before and after the cursor visible
+set smartcase                             " no ignore case when pattern is uppercase
+set wrapscan                              " searches wrap around the end of the file
+set ideajoin                              " Enables the join lines action to behave like IntelliJ's join lines action
+
+""" ---------------------------------------------------------------------------
+""" Mappings ------------------------------------------------------------------
+""" ---------------------------------------------------------------------------
+
+""" General mappings ----------------------------------------------------------
+" edit ideavim config
+nnoremap <leader>vv :e ~/.ideavimrc<CR>
+nnoremap <leader>vr :source ~/.ideavimrc<CR>
+
+" Indent highlighted text in visual mode
+vnoremap > >gv
+" Unindent highlighted text in visual mode
+vnoremap < <gv
+
+" Remap arrow keys to Ctrl + h, Ctrl + j, Ctrl + k, Ctrl + l in insert mode
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+
+xnoremap p P
+
+""" IDEA mappings -------------------------------------------------------------
+-- Use :actionlist to see all available actions
+
+map <Leader>z <Action>(ToggleDistractionFreeMode)
+map <Leader>fc <Action>(Find)
+map <Leader>ff <Action>(FindSelectionInPath)
+map <Leader>fs <Action>(SearchEverywhere)
+
+map gi <Action>(GotoImplementation)
+
+nmap <C-l> <Action>(NextTab)
+nmap <C-h> <Action>(PreviousTab)
+
+nmap <C-D-h> <C-w>h
+nmap <C-D-l> <C-w>l
+
+""" ---------------------------------------------------------------------------
+""" Plugins -------------------------------------------------------------------
+""" ---------------------------------------------------------------------------
+
+Plug 'chrisbra/matchit'
+Plug 'dbakker/vim-paragraph-motion'
+Plug 'kana/vim-textobj-entire'
+
+""" Highlight yank ------------------------------------------------------------
+Plug 'machakann/vim-highlightedyank'
+
+let g:highlightedyank_highlight_color = 'rgba(76, 86, 106, 255)'
+
+"""
+Plug 'michaeljsmith/vim-indent-object'
+
+""" NERDtree support ----------------------------------------------------------
+Plug 'preservim/nerdtree'
+
+nnoremap <leader>e :NERDTreeFocus<CR>
+
+""" Multiple cursors (not to be confused with multicursor) --------------------
+Plug 'terryma/vim-multiple-cursors'
+
+" Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
+nmap <C-n> <Plug>NextWholeOccurrence
+xmap <C-n> <Plug>NextWholeOccurrence
+nmap g<C-n> <Plug>NextOccurrence
+xmap g<C-n> <Plug>NextOccurrence
+xmap <C-x> <Plug>SkipOccurrence
+xmap <C-p> <Plug>RemoveOccurrence
+
+" Note that the default <A-n> and g<A-n> shortcuts don't work on Mac due to dead keys.
+" <A-n> is used to enter accented text e.g. ñ
+" Feel free to pick your own mappings that are not affected. I like to use <leader>
+nmap <leader><C-n> <Plug>AllWholeOccurrences
+xmap <leader><C-n> <Plug>AllWholeOccurrences
+nmap <leader>g<C-n> <Plug>AllOccurrences
+xmap <leader>g<C-n> <Plug>AllOccurrences
+
+""" TODO
+Plug 'tommcdo/vim-exchange'
+
+""" (Un)comment ---------------------------------------------------------------
+Plug 'tpope/vim-commentary'
+
+nnoremap <leader>/ :Commentary<CR>
+vnoremap <leader>/ :Commentary<CR>
+
+""" Surround text -------------------------------------------------------------
+Plug 'tpope/vim-surround'
+
+""" Replace instead of copy-paste ---------------------------------------------
+Plug 'vim-scripts/ReplaceWithRegister'
+
+""" Work with function arguments ----------------------------------------------
+Plug 'vim-scripts/argtextobj.vim'
+
+
+""" ---------------------------------------------------------------------------
+""" Plugins requiring IDEA Plugins --------------------------------------------
+""" IDEA plugins must be installed first before enabling the following plugins
+""" ---------------------------------------------------------------------------
+
+""" Jump quickly through code -------------------------------------------------
+""" Requires IdeaVim-EasyMotion IDEA plugin
+set easymotion
+
+""" Quickly add multiple cursors (not to be confused with vim-multiple-cursors
+""" Requires VimMulticursor IDEA plugin
+set multicursor
+
+""" Jump to any location specified by two characters --------------------------
+""" Must come before quickscope
+set sneak
+
+""" Allows for easy forward/backward navigation on a line ---------------------
+""" Must come after sneak
+set quickscope
+
+""" Shows vim mappings as you type --------------------------------------------
+set which-key
+set notimeout
+
+" Styling
+let g:WhichKey_FontFamily = "Hack Nerd Font Propo"
+let g:WhichKey_FontSize = "14"
+let g:WhichKey_KeyColor = "88c0d0"
+let g:WhichKey_PrefixStyle = "bold"
+let g:WhichKey_PrefixColor = "b48ead"
+let g:WhichKey_CommandStyle = "bold"
+let g:WhichKey_CommandColor = "a3be8c"
+

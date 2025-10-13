@@ -1,0 +1,68 @@
+format = """
+$kubernetes\
+$directory\
+$vcsh\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$docker_context\
+${custom.latest-release}\
+$package\
+${custom.gradlew-version}\
+$lua\
+$nodejs\
+$python\
+$red\
+$rust\
+$terraform\
+$nix_shell\
+$memory_usage\
+$env_var\
+$line_break\
+$time\
+$status\
+$shell\
+$character
+"""
+
+# $gradle <- put this in the above if needed
+
+# Inserts a blank line between shell prompts
+add_newline = true
+command_timeout = 1000
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+# [custom.latest-release]
+# description = "Show latest git tag"
+# command = """git tag -l --sort=-v:refname | rg "^v\\d+\\.\\d+\\.\\d+$" | head -1"""
+# style = "bold blue"
+# symbol = "\uf02c"
+# require_repo = true
+# format = "at [$symbol ($output)]($style) "
+
+[custom.latest-release]
+description = "Show latest git tag"
+command = 'git tag -l --sort=-v:refname | rg "^v\d+\.\d+\.\d+\$" | head -1'
+detect_folders = [".git"]
+require_repo = true
+style = "bold blue"
+symbol = "\uf02c"
+format = "at [$symbol ($output)]($style) "
+
+[custom.gradlew-version]
+description = "Show the current gradlew version"
+command = """rg -e 'gradle-.*' -No (git rev-parse --show-toplevel)/gradle/wrapper/gradle-wrapper.properties | awk -F- '{print $2}'"""
+detect_files = ["gradlew", "build.gradle", "build.gradle.kts"]
+require_repo = true
+style = "bold cyan"
+symbol = "\ue660"
+format = "using [$symbol v($output)]($style) "

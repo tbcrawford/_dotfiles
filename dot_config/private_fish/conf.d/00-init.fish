@@ -1,0 +1,7 @@
+_init_fish
+_init_fisher
+_init_homebrew
+_init_starship
+_init_zoxide
+_init_mise
+
