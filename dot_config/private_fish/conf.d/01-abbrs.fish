@@ -103,5 +103,13 @@ abbr -a -c z pcs platform-core-services
 abbr -a -c z plf platform-frameworks
 abbr -a -c z fgp figure-gradle-plugins
 
+abbr -a -c z tatc ~/dev/tmp/auth0-tenant-config
+abbr -a -c z tatb ~/dev/tmp/terraform-auth0-tenant-base
+abbr -a -c z tpli ~/dev/tmp/platform-identity
+abbr -a -c z tpll ~/dev/tmp/platform-libraries
+abbr -a -c z tpcs ~/dev/tmp/platform-core-services
+abbr -a -c z tplf ~/dev/tmp/platform-frameworks
+abbr -a -c z tfgp ~/dev/tmp/figure-gradle-plugins
+
 # no need to run over-and-over
 set -g ABBRS_INITIALIZED true
