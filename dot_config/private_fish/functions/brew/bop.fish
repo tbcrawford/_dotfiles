@@ -16,4 +16,13 @@ function bop -d "Update Homebrew and all installed packages"
     brew upgrade --formula
     brew cleanup
     brew autoremove
+
+    set -l current_profile (opm show)
+    opm use gsd
+    npx npx @opengsd/get-shit-done-redux@latest --global --opencode --cursor
+    opm use $current_profile
+
+    gsd update
+
+    codegraph upgrade
 end

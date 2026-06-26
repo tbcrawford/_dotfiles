@@ -165,13 +165,8 @@ abbr -a -- grst "git restore --staged"
 # Show operations
 abbr -a -- gsh "git show"
 
-# SVN operations
-abbr -a -- gsd "git svn dcommit"
-abbr -a -- gsr "git svn rebase"
-
 # Status operations
 abbr -a -- gs "git status -sb"
-abbr -a -- gss "git status -s"
 abbr -a -- gst "git status"
 
 # Stash operations
@@ -226,16 +221,6 @@ abbr -a -- gfrt "git flow release track"
 abbr -a -- gfst "git flow support track"
 
 abbr -a -- gfp "git flow publish"
-
-# Git worktree operations
-abbr -a -- gwt "git worktree"
-abbr -a -- gwta "git worktree add"
-abbr -a -- gwtlo "git worktree lock"
-abbr -a -- gwtls "git worktree list"
-abbr -a -- gwtmv "git worktree move"
-abbr -a -- gwtpr "git worktree prune"
-abbr -a -- gwtrm "git worktree remove"
-abbr -a -- gwtulo "git worktree unlock"
 
 # GitLab push options
 abbr -a -- gmr "git push origin (git branch --show-current) --set-upstream -o merge_request.create"

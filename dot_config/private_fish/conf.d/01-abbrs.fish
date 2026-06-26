@@ -9,6 +9,7 @@ abbr -a -- - 'cd -'
 abbr -a -- b bat
 abbr -a -- c clear
 abbr -a -- h history
+abbr -a -- i 'idea .'
 abbr -a -- j just
 abbr -a -- n npm
 abbr -a -- y yarn
@@ -24,7 +25,7 @@ abbr -a -- ......... '../../../../../../../..'
 abbr -a -- .......... '../../../../../../../../..'
 
 # Development tools
-abbr -a -- glogin 'gcloud auth revoke; gcloud auth application-default revoke; gcloud auth login --update-adc'
+abbr -a -- glogin 'gcloud auth revoke --all; gcloud auth login --update-adc'
 abbr -a -- nukebin 'fd -t d bin --exec rm -rf'
 abbr -a -- nukebuild 'fd -t d build --exec rm -rf'
 abbr -a -- nukeds 'fd -t f -H .DS_Store --exec rm'
@@ -44,12 +45,15 @@ abbr -a -- yyyymmdd 'date +%Y%m%d'
 
 # Applications
 abbr -a -- c. 'code .'
+abbr -a -- ca cursor-agent
 abbr -a -- ch chezmoi
 abbr -a -- csp cloud-sql-proxy
 abbr -a -- dtf dependency-tree-diff
+abbr -a -- gt git-spice
 abbr -a -- mx mise
 abbr -a -- nv nvim
 abbr -a -- o. 'open .'
+abbr -a -- oc opencode
 abbr -a -- pip pip3
 abbr -a -- python python3
 abbr -a -- sk skaffold
@@ -74,7 +78,7 @@ abbr -a -- gwft './gradlew fmt test'
 abbr -a -- gwjb './gradlew fmt build -x test'
 abbr -a -- gwl './gradlew lint'
 abbr -a -- gwp './gradlew publishToMavenLocal'
-abbr -a -- gws './gradlew --stop'
+abbr -a -- gwst './gradlew --stop'
 abbr -a -- gwt './gradlew test'
 
 # Just
@@ -82,6 +86,7 @@ abbr -a -- jb 'just build'
 abbr -a -- jbo 'just bounce'
 abbr -a -- jde 'just did -e'
 abbr -a -- jf 'just fmt'
+abbr -a -- ji 'just install'
 abbr -a -- jp 'just pull'
 abbr -a -- jr 'just run'
 abbr -a -- js 'just stop'
@@ -106,6 +111,8 @@ abbr -a -c z fgp figure-gradle-plugins
 abbr -a -c z tatc ~/dev/tmp/auth0-tenant-config
 abbr -a -c z tatb ~/dev/tmp/terraform-auth0-tenant-base
 abbr -a -c z tpli ~/dev/tmp/platform-identity
+abbr -a -c z tpli2 ~/dev/tmp2/platform-identity
+abbr -a -c z tpli3 ~/dev/tmp3/platform-identity
 abbr -a -c z tpll ~/dev/tmp/platform-libraries
 abbr -a -c z tpcs ~/dev/tmp/platform-core-services
 abbr -a -c z tplf ~/dev/tmp/platform-frameworks
