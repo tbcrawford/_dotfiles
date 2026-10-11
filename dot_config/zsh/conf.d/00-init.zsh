@@ -1,0 +1,3 @@
+_init_shell
+_init_homebrew
+_init_mise

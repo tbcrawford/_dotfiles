@@ -1,0 +1,2 @@
+# Login bash: same setup as interactive bash.
+[ -r "$HOME/.bashrc" ] && . "$HOME/.bashrc"
