@@ -18,3 +18,6 @@ for __shell_file in "$__shell_config_dir"/functions/*.zsh "$__shell_config_dir"/
     [ -r "$__shell_file" ] && . "$__shell_file"
 done
 unset __shell_file
+
+# Restored by ~/.zprofile after macOS's path_helper reorders PATH
+__shell_env_path="$PATH"
