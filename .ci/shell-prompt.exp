@@ -14,6 +14,11 @@
 set timeout 60
 set marker "__verify_ready__"
 
+# Look like a real terminal: CI sets TERM=dumb (starship refuses to render),
+# and a wide window keeps long prompts (CI hostnames) from wrapping.
+set env(TERM) xterm-256color
+set stty_init "columns 300 rows 50"
+
 spawn -noecho {*}$argv
 
 # Startup: first output, then quiet
