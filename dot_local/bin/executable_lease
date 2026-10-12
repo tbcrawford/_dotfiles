@@ -1,0 +1,17 @@
+#!/bin/sh
+# Lease a treehouse worktree for the current repo, index it, and link its .env.
+# Extra arguments go to `treehouse get` (e.g. -b my-branch, --base develop).
+# Prints only the worktree path on stdout; progress goes to stderr.
+# Usage: worktree="$(lease [treehouse-get-args...])"
+set -eu
+
+worktree=$(treehouse get --lease "$@")
+
+if [ -d "$worktree/.codegraph" ]; then
+  (cd "$worktree" && codegraph sync) >&2 || echo "lease: codegraph sync failed; continuing" >&2
+else
+  codegraph init -y "$worktree" >&2 || echo "lease: codegraph init failed; continuing" >&2
+fi
+env-link "$worktree" >&2
+
+printf '%s\n' "$worktree"
