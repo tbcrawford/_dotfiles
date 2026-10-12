@@ -1,0 +1,4 @@
+# Cloned on first apply; never auto-pulled (refreshPeriod 0) so local work is safe.
+["dev/github/ah"]
+    type = "git-repo"
+    url = "https://github.com/tbcrawford/ah.git"

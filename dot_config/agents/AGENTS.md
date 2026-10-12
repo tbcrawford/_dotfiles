@@ -70,3 +70,10 @@ When writing, editing, or reviewing Kotlin tests:
 
 - A Gradle/Artifact Registry 401 or 403 means my gcloud login expired: ask me to run `glogin`; don't look for credentials. Ask me for any secret you need; don't search for one.
 - If a secret value ever appears in output, stop and tell me which one; don't repeat it.
+
+## Tooling
+
+- Edit files with your native edit tool, never with Python, `sed`, or shell heredocs. Read files with the native read tool, not `sed -n`, `cat -n`, or `nl`.
+- `ah` is the harness CLI for recurring workflows: worktree leases, Gradle tests, PR review threads, CI status, and long-running local services. Run `ah --help` (or `ah schema`) before writing a script, and prefer it over raw `./gradlew … | rg`, hand-written `gh api graphql` queries, or `launchctl` / `sleep; curl` loops.
+- `ah` prints one JSON envelope on stdout: branch on `.ok`, `.error.kind`, and the exit code, and follow `.error.hint`.
+- If you write the same helper twice and `ah` lacks it, suggest an `ah` command to me instead of another throwaway script.
