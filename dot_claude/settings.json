@@ -1,0 +1,26 @@
+{
+  "theme": "dark",
+  "permissions": {
+    "deny": [
+      "Bash(env)",
+      "Bash(op environment read:*)",
+      "Bash(op read:*)",
+      "Bash(printenv)",
+      "Bash(printenv:*)",
+      "Edit(**/.env)",
+      "Edit(**/.env.*.local)",
+      "Edit(**/.env.development)",
+      "Edit(**/.env.local)",
+      "Edit(**/.env.production)",
+      "Edit(**/.env.staging)",
+      "Edit(**/.env.test)",
+      "Read(**/.env)",
+      "Read(**/.env.*.local)",
+      "Read(**/.env.development)",
+      "Read(**/.env.local)",
+      "Read(**/.env.production)",
+      "Read(**/.env.staging)",
+      "Read(**/.env.test)"
+    ]
+  }
+}

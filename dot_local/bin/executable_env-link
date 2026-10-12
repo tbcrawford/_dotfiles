@@ -1,0 +1,23 @@
+#!/bin/sh
+# Symlink a checkout's .env to its project's 1Password-mounted .env.
+# Mounts live at ~/.config/op/env/<repo>.env (named pipes created by the 1Password app).
+# Usage: env-link [checkout-dir]   (defaults to the current directory)
+set -eu
+
+top=$(git -C "${1:-.}" rev-parse --show-toplevel)
+repo=$(basename "$(git -C "$top" remote get-url origin)" .git)
+src="${XDG_CONFIG_HOME:-$HOME/.config}/op/env/$repo.env"
+dst="$top/.env"
+
+if [ ! -p "$src" ]; then
+  echo "env-link: no 1Password mount at $src; skipping" >&2
+  exit 0
+fi
+if [ -e "$dst" ] && [ ! -L "$dst" ]; then
+  echo "env-link: $dst is a regular file; move it into 1Password first" >&2
+  exit 1
+fi
+git -C "$top" check-ignore -q .env || echo "env-link: warning: .env is not gitignored in $repo" >&2
+
+ln -sfn "$src" "$dst"
+echo "$dst -> $src"
