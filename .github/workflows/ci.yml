@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v7
+      - run: brew install fish shellcheck
+      - name: shellcheck
+        run: shellcheck .ci/*.sh .chezmoiscripts/*.sh dot_local/bin/*.sh dot_cursor/hooks/*.sh modify_private_dot_claude.json
+      - name: fish syntax
+        run: find dot_config/private_fish -name '*.fish' -print0 | xargs -0 -n1 fish --no-execute
+
+  # Applies the dotfiles to the runner and checks the result. The runner is not
+  # a clean Mac (Homebrew and the Command Line Tools are preinstalled); run
+  # .ci/tart-verify.sh locally to test from a vanilla macOS VM.
+  provision:
+    runs-on: macos-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+      - run: .ci/provision.sh "$GITHUB_WORKSPACE"
+      - run: bash -l .ci/verify.sh "$GITHUB_WORKSPACE"

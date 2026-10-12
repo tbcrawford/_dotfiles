@@ -1,0 +1,52 @@
+#!/usr/bin/expect -f
+#
+# Start an interactive shell in a pseudo-terminal, wait for it to settle on a
+# prompt, run one command, and exit. The full terminal transcript goes to
+# stdout so the caller can check it for errors.
+#
+# Answers the terminal queries fish sends at startup (device attributes and
+# cursor position); without a reply fish stalls for 10 seconds and warns.
+#
+# Usage: shell-prompt.exp <shell> [args...]
+# Exit codes: 0 = command ran and the shell exited cleanly, 1 = shell exited
+# non-zero, 2 = timed out waiting for the shell
+
+set timeout 60
+set marker "__verify_ready__"
+
+spawn -noecho {*}$argv
+
+# Startup: first output, then quiet
+expect {
+    -re "\033\\\[0?c" { send "\033\[?62c"; exp_continue }
+    -re "\033\\\[6n" { send "\033\[1;1R"; exp_continue }
+    -re ".+" {}
+    timeout { exit 2 }
+}
+set timeout 1
+expect {
+    -re "\033\\\[0?c" { send "\033\[?62c"; exp_continue }
+    -re "\033\\\[6n" { send "\033\[1;1R"; exp_continue }
+    -re ".+" { exp_continue }
+    timeout {}
+}
+
+set timeout 60
+send "echo $marker\r"
+expect {
+    -re "\033\\\[0?c" { send "\033\[?62c"; exp_continue }
+    -re "\033\\\[6n" { send "\033\[1;1R"; exp_continue }
+    -re "\[\r\n\]$marker\r" {}
+    timeout { exit 2 }
+}
+
+send "exit\r"
+expect {
+    -re "\033\\\[0?c" { send "\033\[?62c"; exp_continue }
+    -re "\033\\\[6n" { send "\033\[1;1R"; exp_continue }
+    eof {}
+    timeout { exit 2 }
+}
+
+lassign [wait] pid spawn_id os_error status
+exit [expr {$status == 0 ? 0 : 1}]
