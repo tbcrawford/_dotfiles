@@ -1,0 +1,5 @@
+# Read by login zsh after /etc/zprofile, where macOS's path_helper moves the
+# system directories ahead of everything ~/.zshenv added (so /usr/bin/java beats
+# the mise shim). Put our PATH back in front and drop the duplicates.
+[ -n "${__shell_env_path:-}" ] && PATH="$__shell_env_path:$PATH"
+typeset -U path

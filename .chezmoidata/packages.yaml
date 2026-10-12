@@ -2,6 +2,10 @@ packages:
   darwin:
     brews:
     - 'chezmoi'
+    - 'fish'
+    - 'mise'
     - 'ripgrep'
+    - 'starship'
+    - 'zoxide'
     casks:
     - 'firefox'
