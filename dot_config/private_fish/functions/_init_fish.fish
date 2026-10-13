@@ -32,11 +32,7 @@ function _init_fish -d "Initialize Fish shell"
     set -q LC_ALL || set -gx LC_ALL en_US.UTF-8
     set -q LANG || set -gx LANG en_US.UTF-8
 
-    # Set theme if not already set
-    if not set -q FISH_THEME
-        fish_config theme choose Nord >/dev/null 2>&1
-        set -Ux FISH_THEME nord
-    end
+    fish_config theme choose nord
 
     set -g fish_initialized true
 end
