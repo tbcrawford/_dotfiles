@@ -74,7 +74,7 @@ When writing, editing, or reviewing Kotlin tests:
 ## Tooling
 
 - Edit files with your native edit tool, never with Python, `sed`, or shell heredocs. Read files with the native read tool, not `sed -n`, `cat -n`, or `nl`.
-- `ah` is the harness CLI for recurring workflows: worktree leases, Gradle tests, PR review threads, CI status, and long-running local services. Run `ah --help` (or `ah schema`) before writing a script, and prefer it over raw `./gradlew … | rg`, hand-written `gh api graphql` queries, or `launchctl` / `sleep; curl` loops.
+- `ah` is the harness CLI for recurring workflows: worktree inventory and pruning across home clones, Gradle tests, PR review threads, CI status, and long-running local services. Run `ah --help` (or `ah schema`) before writing a script, and prefer it over raw `./gradlew … | rg`, hand-written `gh api graphql` queries, or `launchctl` / `sleep; curl` loops.
 - `ah` prints one JSON envelope on stdout: branch on `.ok`, `.error.kind`, and the exit code, and follow `.error.hint`.
 - Keep improving `ah`. Fix or extend it in `~/dev/github/ah` (following its `AGENTS.md`) instead of working around it with a throwaway script when:
   - a command fails or returns wrong or unhelpful output
