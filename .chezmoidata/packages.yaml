@@ -3,9 +3,11 @@ packages:
     brews:
     - 'chezmoi'
     - 'fish'
+    - 'gh'
     - 'mise'
     - 'ripgrep'
     - 'starship'
+    - 'worktrunk'
     - 'zoxide'
     casks:
     - 'firefox'
