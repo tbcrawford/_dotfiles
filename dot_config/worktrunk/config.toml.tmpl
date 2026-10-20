@@ -1,11 +1,8 @@
 # Home clones live in ~/dev/home; keep their worktrees out of that directory.
 worktree-path = "{{ .chezmoi.homeDir }}/dev/worktrees/{{ "{{" }} repo {{ "}}" }}/{{ "{{" }} branch | sanitize {{ "}}" }}"
 
-# Seeding copies the home clone's .codegraph/ (and node_modules/ where present),
-# as listed in its untracked .worktreeinclude; bin/warm keeps those current.
+# Seeding copies the home clone's node_modules/ where present, as listed in its
+# untracked .worktreeinclude; bin/warm keeps it current.
 [pre-start]
 env = "ah env link {{ "{{" }} worktree_path {{ "}}" }}"
 seed = "{{ .chezmoi.homeDir }}/dev/home/bin/warm seed {{ "{{" }} primary_worktree_path {{ "}}" }} {{ "{{" }} worktree_path {{ "}}" }}"
-
-[post-start]
-index = "codegraph sync {{ "{{" }} worktree_path {{ "}}" }} || codegraph init -y {{ "{{" }} worktree_path {{ "}}" }}"

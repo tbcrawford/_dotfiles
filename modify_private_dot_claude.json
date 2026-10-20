@@ -6,6 +6,5 @@ current="$(cat)"
 [ -n "$current" ] || current='{}'
 
 printf '%s\n' "$current" | jq '.mcpServers = ((.mcpServers // {}) + {
-  "codegraph": {"type": "stdio", "command": "codegraph", "args": ["serve", "--mcp"]},
   "executor": {"type": "stdio", "command": "executor", "args": ["mcp"], "env": {}}
 })'
