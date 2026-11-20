@@ -12,12 +12,23 @@ These instructions apply across projects. Follow repository-specific `AGENTS.md`
 
 - Use Conventional Commits for commit messages and PR titles: `type(scope): description` or `type: description`.
 - Allowed types: `feat`, `fix`, `docs`, `test`, `refactor`, `chore`, `build`, `ci`, `perf`, `revert`.
+- Whenever I mention stacking PRs (a stack, stacked or dependent PRs, or splitting work into layers), build and maintain the stack with `gh stack`, following the `gh-stack` skill.
 - When writing a PR title or body, follow the `pr-figure` skill (`~/.agents/skills/pr-figure/SKILL.md`) first. Use the `pr` skill only for anything `pr-figure` does not cover.
 
 ## Response style after edits
 
 - After successful edits, reply with one short line naming the updated file(s). Let the diff speak for itself; omit summaries, edit lists, introductions, and pleasantries.
 - Give a fuller response only when a command fails, tests break, or essential clarification is needed.
+- Either way, end with the turn wrap-up below.
+
+## Turn wrap-up
+
+End every turn so I can tell at a glance where things stand.
+
+- State results, status, and what's next as plain sentences, not questions.
+- Ask for anything you need from me as a question: a decision, an action only I can take (a login, an approval, a merge), or missing information.
+- Put those questions last, under a heading for each kind that applies: `### Decisions`, `### Actions for you`, `### Questions`. Leave out any heading with nothing under it.
+- When nothing is needed from me, say so in one sentence (for example, "Nothing is needed from you right now.") instead of adding an empty section.
 
 ## Kotlin and Java
 
