@@ -5,6 +5,7 @@ set -eu
 current="$(cat)"
 [ -n "$current" ] || current='{}'
 
-printf '%s\n' "$current" | jq '.mcpServers = ((.mcpServers // {}) + {
-  "executor": {"type": "stdio", "command": "executor", "args": ["mcp"], "env": {}}
-})'
+# Claude Code writes the file without a trailing newline; match it so apply stays a no-op.
+printf '%s' "$(printf '%s\n' "$current" | jq '.mcpServers = ((.mcpServers // {}) + {
+  "executor": {"type": "http", "url": "http://127.0.0.1:4312/mcp"}
+})')"

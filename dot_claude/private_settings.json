@@ -1,5 +1,4 @@
 {
-  "theme": "dark",
   "permissions": {
     "deny": [
       "Bash(docker compose config:*)",
@@ -38,6 +37,13 @@
       "Read(**/.env.production)",
       "Read(**/.env.staging)",
       "Read(**/.env.test)"
-    ]
-  }
+    ],
+    "defaultMode": "default"
+  },
+  "workflowKeywordTriggerEnabled": false,
+  "enabledPlugins": {},
+  "extraKnownMarketplaces": {},
+  "theme": "auto",
+  "editorMode": "normal",
+  "switchModelsOnFlag": false
 }
