@@ -20,6 +20,8 @@ max_cache_ttl = "24h"
 # No service account token.
 [providers.op]
 type = "1password"
+# The personal account ("The Crawfords"), not op's default (Figure).
+account = "my.1password.com"
 
 # Source: the `dev-home` 1Password Environment (1Password app > Developer > Environments).
 [secrets]
