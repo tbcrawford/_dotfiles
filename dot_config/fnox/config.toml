@@ -1,0 +1,36 @@
+# Global fnox config. References only: never put a secret value in this file.
+#
+# Agents run secret-consuming commands with `hts env run -- <cmd>`, which uses
+# the daemon cache non-interactively and redacts values from the output.
+# The human warms the cache once a day with `hts env unlock` (Touch ID).
+# The com.tylercrawford.fnox-lock LaunchAgent stops the daemon at local midnight.
+#
+# Opt-in secret sets live in ./profiles/<name>.toml and load only through
+# `hts env run --profile <name>` (fnox -c). fnox 1.50.0's daemon only caches the
+# default profile, so they are separate config files, not [profiles.*] tables.
+
+redact_exec = true
+
+[daemon]
+enabled = true
+idle_timeout = "24h"
+max_cache_ttl = "24h"
+
+# 1Password through the desktop-app integration of the `op` CLI.
+# No service account token.
+[providers.op]
+type = "1password"
+
+# Source: the 1Password Environment behind the ~/dev/home/.env mount.
+# TODO: replace ENVIRONMENT_ID with that Environment's ID
+# (1Password app > Developer > Environments > the environment > copy ID).
+[secrets]
+TF_TOKEN_app_terraform_io = { provider = "op", value = "environment://ENVIRONMENT_ID/TF_TOKEN_app_terraform_io" }
+NEXUS_USER = { provider = "op", value = "environment://ENVIRONMENT_ID/NEXUS_USER" }
+NEXUS_PASS = { provider = "op", value = "environment://ENVIRONMENT_ID/NEXUS_PASS" }
+NEXUS_HOST = { provider = "op", value = "environment://ENVIRONMENT_ID/NEXUS_HOST" }
+NEXUS_NPM_TOKEN = { provider = "op", value = "environment://ENVIRONMENT_ID/NEXUS_NPM_TOKEN" }
+MAILSLURP_API_KEY = { provider = "op", value = "environment://ENVIRONMENT_ID/MAILSLURP_API_KEY" }
+
+# TODO: no 1Password source found yet. Add the reference, then uncomment.
+# TWILIO_BASIC_AUTH = { provider = "op", value = "op://<vault>/<item>/<field>" }

@@ -1,0 +1,8 @@
+# Auth0 test tenant credentials. Loaded with the global config only through
+# `hts env run --profile auth0-test` (the default for auth0 repos).
+# References only: never put a secret value in this file.
+
+# TODO: no 1Password source found yet. Add the references, then uncomment.
+[secrets]
+# TF_VAR_lending_test_auth0_client_id = { provider = "op", value = "op://<vault>/<item>/<field>" }
+# TF_VAR_lending_test_auth0_client_secret = { provider = "op", value = "op://<vault>/<item>/<field>" }

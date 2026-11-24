@@ -1,0 +1,8 @@
+# Auth0 PRODUCTION tenant credentials. Never a default: loaded only by an
+# explicit `hts env run --profile auth0-prod` (or `hts env unlock --profile auth0-prod`).
+# References only: never put a secret value in this file.
+
+# TODO: no 1Password source found yet. Add the references, then uncomment.
+[secrets]
+# TF_VAR_lending_prod_auth0_client_id = { provider = "op", value = "op://<vault>/<item>/<field>" }
+# TF_VAR_lending_prod_auth0_client_secret = { provider = "op", value = "op://<vault>/<item>/<field>" }
