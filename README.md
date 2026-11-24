@@ -23,7 +23,7 @@ This will:
 - Any additional packages/tools defined in your chezmoi configuration
 - The tools in `~/.config/mise/config.toml`, via `mise install`
 
-`~/dev/github/ah` is a private repository, so it is skipped until GitHub is
+`~/dev/github/handy-tools` is a private repository, so it is skipped until GitHub is
 logged in. After `gh auth login`, run `chezmoi apply` again to clone it.
 
 ## Verification

@@ -13,6 +13,7 @@ These instructions apply across projects. Follow repository-specific `AGENTS.md`
 - Use Conventional Commits for commit messages and PR titles: `type(scope): description` or `type: description`.
 - Allowed types: `feat`, `fix`, `docs`, `test`, `refactor`, `chore`, `build`, `ci`, `perf`, `revert`.
 - Whenever I mention stacking PRs (a stack, stacked or dependent PRs, or splitting work into layers), build and maintain the stack with `gh stack`, following the `gh-stack` skill.
+- When I say to merge a PR, squash merge it. Fall back to a regular merge commit only when the repository doesn't allow squash merging.
 - When writing a PR title or body, follow the `pr-figure` skill (`~/.agents/skills/pr-figure/SKILL.md`) first. Use the `pr` skill only for anything `pr-figure` does not cover.
 
 ## Response style after edits
@@ -85,11 +86,11 @@ When writing, editing, or reviewing Kotlin tests:
 ## Tooling
 
 - Edit files with your native edit tool, never with Python, `sed`, or shell heredocs. Read files with the native read tool, not `sed -n`, `cat -n`, or `nl`.
-- `ah` is the harness CLI for recurring workflows: worktree inventory and pruning across home clones, Gradle tests, PR review threads, CI status, and long-running local services. Run `ah --help` (or `ah schema`) before writing a script, and prefer it over raw `./gradlew … | rg`, hand-written `gh api graphql` queries, or `launchctl` / `sleep; curl` loops.
-- `ah` prints one JSON envelope on stdout: branch on `.ok`, `.error.kind`, and the exit code, and follow `.error.hint`.
-- Keep improving `ah`. Fix or extend it in `~/dev/github/ah` (following its `AGENTS.md`) instead of working around it with a throwaway script when:
+- `hts` ("handy tools") is the CLI for recurring workflows: worktree inventory and pruning across home clones, Gradle tests, PR review threads, CI status, secret-backed commands, and long-running local services. Run `hts --help` (or `hts schema`) before writing a script, and prefer it over raw `./gradlew … | rg`, hand-written `gh api graphql` queries, or `launchctl` / `sleep; curl` loops.
+- `hts` prints one JSON envelope on stdout: branch on `.ok`, `.error.kind`, and the exit code, and follow `.error.hint`.
+- Keep improving `hts`. Fix or extend it in `~/dev/github/handy-tools` (following its `AGENTS.md`) instead of working around it with a throwaway script when:
   - a command fails or returns wrong or unhelpful output
   - a command lacks a flag or behavior the task needs
   - you'd write the same helper twice
-- Prove an `ah` change works before shipping it: `bun test`, `bunx tsc --noEmit`, and a live run of the affected command against the real system.
+- Prove an `hts` change works before shipping it: `bun test`, `bunx tsc --noEmit`, and a live run of the affected command against the real system.
 - Once it's proven, commit directly on `main` and push. This repo needs no branch, Shortcut ID, or PR. Run `git pull --rebase` before pushing, since other agents may have pushed. Mention the change in your reply.

@@ -4,5 +4,5 @@ worktree-path = "{{ .chezmoi.homeDir }}/dev/worktrees/{{ "{{" }} repo {{ "}}" }}
 # Seeding copies the home clone's node_modules/ where present, as listed in its
 # untracked .worktreeinclude; bin/warm keeps it current.
 [pre-start]
-env = "ah env link {{ "{{" }} worktree_path {{ "}}" }}"
+env = "hts env link {{ "{{" }} worktree_path {{ "}}" }}"
 seed = "{{ .chezmoi.homeDir }}/dev/home/bin/warm seed {{ "{{" }} primary_worktree_path {{ "}}" }} {{ "{{" }} worktree_path {{ "}}" }}"

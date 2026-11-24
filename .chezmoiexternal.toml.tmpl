@@ -1,9 +1,9 @@
-{{- /* ah is private, so cloning needs GitHub credentials, which a new Mac
+{{- /* handy-tools (hts) is private, so cloning needs GitHub credentials, which a new Mac
        doesn't have on its first apply. Skip it until `gh auth login` has run;
        the next `chezmoi apply` clones it. */ -}}
 {{ if stat (joinPath .chezmoi.homeDir ".config/gh/hosts.yml") -}}
 # Cloned on first apply; never auto-pulled (refreshPeriod 0) so local work is safe.
-["dev/github/ah"]
+["dev/github/handy-tools"]
     type = "git-repo"
-    url = "https://github.com/tbcrawford/ah.git"
+    url = "https://github.com/tbcrawford/handy-tools.git"
 {{ end -}}
