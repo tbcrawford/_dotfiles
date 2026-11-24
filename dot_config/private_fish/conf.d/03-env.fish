@@ -3,8 +3,9 @@ set -q FISH_THEME; or set -Ux FISH_THEME nord
 set -q BAT_THEME; or set -Ux BAT_THEME Nord
 set -q USE_GKE_GCLOUD_AUTH_PLUGIN; or set -Ux USE_GKE_GCLOUD_AUTH_PLUGIN True
 set -q DOCKER_DEFAULT_PLATFORM; or set -Ux DOCKER_DEFAULT_PLATFORM linux/arm64
-set -q HOMEBREW_NO_REQUIRE_TAP_TRUST; or set -Ux HOMEBREW_NO_REQUIRE_TAP_TRUST 1
 
 set -q GOOGLE_CLOUD_PROJECT; or set -Ux GOOGLE_CLOUD_PROJECT figure-production
-set -q VERTEX_LOCATION; or set -Ux VERTEX_LOCATION global
-set -q GOOGLE_CLOUD_LOCATION; or set -Ux GOOGLE_CLOUD_LOCATION global
+
+set -gx COPILOT_OTEL_ENABLED true
+set -gx COPILOT_OTEL_EXPORTER_TYPE file
+set -gx COPILOT_OTEL_FILE_EXPORTER_PATH "/Users/tylercrawford/.copilot/otel/copilot-otel-"(date +%Y%m%d)".jsonl"

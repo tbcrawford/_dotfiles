@@ -25,7 +25,7 @@ abbr -a -- ......... '../../../../../../../..'
 abbr -a -- .......... '../../../../../../../../..'
 
 # Development tools
-abbr -a -- glogin 'gcloud auth revoke --all; gcloud auth login --update-adc'
+# abbr -a -- glogin 'gcloud auth revoke --all; gcloud auth login --update-adc --enable-gdrive-access'
 abbr -a -- nukebin 'fd -t d bin --exec rm -rf'
 abbr -a -- nukebuild 'fd -t d build --exec rm -rf'
 abbr -a -- nukeds 'fd -t f -H .DS_Store --exec rm'
@@ -50,6 +50,7 @@ abbr -a -- ch chezmoi
 abbr -a -- csp cloud-sql-proxy
 abbr -a -- dtf dependency-tree-diff
 abbr -a -- gt git-spice
+abbr -a -- hd herdr
 abbr -a -- mx mise
 abbr -a -- nv nvim
 abbr -a -- o. 'open .'
