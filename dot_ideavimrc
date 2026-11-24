@@ -54,6 +54,14 @@ nmap <C-h> <Action>(PreviousTab)
 nmap <C-D-h> <C-w>h
 nmap <C-D-l> <C-w>l
 
+" Jump motions
+nnoremap <silent> gj /^\s*\S<CR>^:noh<CR>
+nnoremap <silent> gk ?^\s*\S<CR>^:noh<CR>
+
+" Add a new caret below or above current caret at the first non-blank character
+nmap <C-S-n> ^:action EditorCloneCaretBelow<CR>
+nmap <C-S-p> ^:action EditorCloneCaretAbove<CR>
+
 """ ---------------------------------------------------------------------------
 """ Plugins -------------------------------------------------------------------
 """ ---------------------------------------------------------------------------
