@@ -2,7 +2,7 @@
 #!/bin/bash
 
 # Install the tools in ~/.config/mise/config.toml whenever it changes.
-# config.toml hash: {{ include "dot_config/mise/config.toml" | sha256sum }}
+# config.toml hash: {{ include "dot_config/mise/config.toml.tmpl" | sha256sum }}
 
 set -euo pipefail
 
