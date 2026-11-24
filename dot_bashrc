@@ -1,2 +1,5 @@
 # Bash shares the zsh environment in ~/.config/zsh (written to work in both).
 . "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/env.zsh"
+
+# Vite+ bin (https://viteplus.dev)
+. "/Users/tylercrawford/.config/vite-plus/env"

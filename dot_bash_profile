@@ -1,2 +1,5 @@
 # Login bash: same setup as interactive bash.
 [ -r "$HOME/.bashrc" ] && . "$HOME/.bashrc"
+
+# Vite+ bin (https://viteplus.dev)
+. "/Users/tylercrawford/.config/vite-plus/env"

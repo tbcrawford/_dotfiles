@@ -1,2 +1,5 @@
 # Read by every zsh (interactive or not). All config lives in ~/.config/zsh.
 . "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/env.zsh"
+
+# Vite+ bin (https://viteplus.dev)
+. "/Users/tylercrawford/.config/vite-plus/env"
