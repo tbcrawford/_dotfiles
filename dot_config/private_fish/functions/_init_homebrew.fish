@@ -5,6 +5,11 @@ function _init_homebrew -d "Initialize Homebrew environment"
         return 0
     end
 
+    # A fresh Mac has no Homebrew on PATH yet, so look in its default prefix
+    if not command -q brew; and test -x /opt/homebrew/bin/brew
+        fish_add_path --global --path /opt/homebrew/bin
+    end
+
     if not command -q brew
         return 1
     end
