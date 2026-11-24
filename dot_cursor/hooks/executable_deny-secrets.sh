@@ -22,6 +22,7 @@ if [ -n "$command" ]; then
   # output, so its --env-file arguments are exempt. The rest of the command is still checked.
   subject=$command
   if ! printf '%s' "$command" | grep -Eq -- '--no-masking'; then
+    # shellcheck disable=SC2016 # a literal regex, not an expansion
     tok='[^- ;&|$`()<>][^ ;&|$`()<>]*'
     subject=$(printf '%s' "$command" | sed -E ":a
 s/(op +run( +--?[A-Za-z][A-Za-z-]*(=$tok)?)*) +--env-file(=| +)$tok/\1/
@@ -38,6 +39,7 @@ else
 fi
 
 if [ -n "$command" ] && printf '%s' "$command" | grep -Eq "$secret_cmd"; then
+  # shellcheck disable=SC2016 # backticks are Markdown in the message
   printf '%s\n' '{"permission":"deny","user_message":"Blocked: commands that print secrets are off-limits to agents.","agent_message":"Commands that print secret values are denied by policy. Run the command that needs secrets as `hts env run -- <cmd>`; if it reports a cold cache, ask the user to run `hts env unlock`."}'
 elif printf '%s' "$subject" | grep -Eq "$env_file|$env_dump"; then
   printf '%s\n' '{"permission":"deny","user_message":"Blocked: dotenv files and environment dumps are off-limits to agents.","agent_message":"Access to dotenv files and environment dumps is denied by policy. Ask the user for any secret you need; do not try another route."}'

@@ -75,7 +75,7 @@ for tool in brew chezmoi git jq rg fish starship zoxide mise; do
 done
 
 # mise shims exist only for installed tools, but run them to be sure.
-for tool_cmd in "java -version" "node --version" "terraform version" "watchexec --version"; do
+for tool_cmd in "java -version" "node --version" "bun --version" "watchexec --version"; do
     check "${tool_cmd%% *} runs via mise (zsh)" zsh -lc "$tool_cmd"
     check "${tool_cmd%% *} runs via mise (fish)" fish -lc "$tool_cmd"
 done

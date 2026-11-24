@@ -2,4 +2,4 @@
 . "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/env.zsh"
 
 # Vite+ bin (https://viteplus.dev)
-. "/Users/tylercrawford/.config/vite-plus/env"
+[ -r "$HOME/.config/vite-plus/env" ] && . "$HOME/.config/vite-plus/env"

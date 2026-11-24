@@ -8,4 +8,4 @@ set -q GOOGLE_CLOUD_PROJECT; or set -Ux GOOGLE_CLOUD_PROJECT figure-production
 
 set -gx COPILOT_OTEL_ENABLED true
 set -gx COPILOT_OTEL_EXPORTER_TYPE file
-set -gx COPILOT_OTEL_FILE_EXPORTER_PATH "/Users/tylercrawford/.copilot/otel/copilot-otel-"(date +%Y%m%d)".jsonl"
+set -gx COPILOT_OTEL_FILE_EXPORTER_PATH "$HOME/.copilot/otel/copilot-otel-"(date +%Y%m%d)".jsonl"

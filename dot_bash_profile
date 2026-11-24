@@ -2,4 +2,4 @@
 [ -r "$HOME/.bashrc" ] && . "$HOME/.bashrc"
 
 # Vite+ bin (https://viteplus.dev)
-. "/Users/tylercrawford/.config/vite-plus/env"
+[ -r "$HOME/.config/vite-plus/env" ] && . "$HOME/.config/vite-plus/env"
