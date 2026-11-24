@@ -21,16 +21,12 @@ max_cache_ttl = "24h"
 [providers.op]
 type = "1password"
 
-# Source: the 1Password Environment behind the ~/dev/home/.env mount.
-# TODO: replace ENVIRONMENT_ID with that Environment's ID
-# (1Password app > Developer > Environments > the environment > copy ID).
+# Source: the `dev-home` 1Password Environment (1Password app > Developer > Environments).
 [secrets]
-TF_TOKEN_app_terraform_io = { provider = "op", value = "environment://ENVIRONMENT_ID/TF_TOKEN_app_terraform_io" }
-NEXUS_USER = { provider = "op", value = "environment://ENVIRONMENT_ID/NEXUS_USER" }
-NEXUS_PASS = { provider = "op", value = "environment://ENVIRONMENT_ID/NEXUS_PASS" }
-NEXUS_HOST = { provider = "op", value = "environment://ENVIRONMENT_ID/NEXUS_HOST" }
-NEXUS_NPM_TOKEN = { provider = "op", value = "environment://ENVIRONMENT_ID/NEXUS_NPM_TOKEN" }
-MAILSLURP_API_KEY = { provider = "op", value = "environment://ENVIRONMENT_ID/MAILSLURP_API_KEY" }
+TF_TOKEN_app_terraform_io = { provider = "op", value = "environment://dev-home/TF_TOKEN_app_terraform_io" }
+NEXUS_USER = { provider = "op", value = "environment://dev-home/NEXUS_USER" }
+NEXUS_PASS = { provider = "op", value = "environment://dev-home/NEXUS_PASS" }
+MAILSLURP_API_KEY = { provider = "op", value = "environment://dev-home/MAILSLURP_API_KEY" }
 
 # TODO: no 1Password source found yet. Add the reference, then uncomment.
 # TWILIO_BASIC_AUTH = { provider = "op", value = "op://<vault>/<item>/<field>" }
